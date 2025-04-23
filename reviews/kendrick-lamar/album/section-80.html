@@ -1,1 +1,567 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="WSLF Radio Music Review - Section.80 by Kendrick Lamar">
+    <meta property="og:description" content="A detailed review of Kendrick Lamar's debut album Section.80, released in 2011, on WSLF Radio.">
+    <meta property="og:image" content="https://wslf-radio.neocities.org/WSLF_Transparent.png">
+    <title>Album Review - Section.80 by Kendrick Lamar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #3a3a3a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s ease-in-out;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .menu-bar img {
+            width: 50px;
+            margin-right: 20px;
+        }
+
+        .menu-items {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+
+        .menu-item {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .menu-item:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .menu-item i {
+            margin-right: 8px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #3a3a3a;
+            min-width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #e0e0e0;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 80px auto 30px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .blog-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #3a3a3a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-banner img {
+            width: 100px;
+            height: auto;
+        }
+
+        .blog-banner h1 {
+            margin: 0;
+            color: #e0e0e0;
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+
+        .album-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background: #3a3a3a;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        .album-cover {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .album-details {
+            flex: 1;
+        }
+
+        .album-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .artist-name {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin: 5px 0;
+        }
+
+        .rating {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 6px;
+            background-color: #ef5350; /* for not good to 4 */
+            color: #fff;
+        }
+
+        .rating.neutral {
+            background-color: #ffca28; /* for 5 to 7 */
+        }
+
+        .rating.positive {
+            background-color: #4caf50; /* for 8 to 10 */
+        }
+
+        .thamfndate {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h3 {
+            text-align: left;
+            color: #e0e0e0;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 15px 0;
+            border-left: 4px solid #555;
+            padding-left: 10px;
+        }
+
+        .paragraph {
+            margin: 20px 0;
+            color: #d0d0d0;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        .paragraph p {
+            font-size: 1.2rem;
+            color: #d0d0d0;
+            margin: 15px 0;
+        }
+
+        .paragraph:nth-child(1) { animation-delay: 0.2s; }
+        .paragraph:nth-child(2) { animation-delay: 0.4s; }
+        .paragraph:nth-child(3) { animation-delay: 0.6s; }
+        .paragraph:nth-child(4) { animation-delay: 0.8s; }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #555;
+            margin: 20px 0;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .track-highlights {
+            margin: 20px 0;
+            padding: 10px;
+            background: #3a3a3a;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        .track-highlights p {
+            margin: 5px 0;
+        }
+
+        .track-highlights strong {
+            color: #e0e0e0;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #3a3a3a;
+            color: #e0e0e0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-bar img {
+                width: 40px;
+            }
+
+            .menu-item, .dropdown-toggle {
+                margin-right: 15px;
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+
+            .dropdown-menu {
+                min-width: 180px;
+            }
+
+            .dropdown-item {
+                padding: 6px 10px;
+            }
+
+            .content {
+                margin: 70px 20px 20px 20px;
+                padding: 20px;
+            }
+
+            .blog-banner {
+                padding: 15px;
+            }
+
+            .blog-banner h1 {
+                font-size: 1.5rem;
+            }
+
+            .album-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .album-cover {
+                width: 120px;
+                height: 120px;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .album-title {
+                font-size: 1.8rem;
+            }
+
+            .artist-name {
+                font-size: 1rem;
+            }
+
+            .rating {
+                font-size: 1rem;
+                padding: 4px 8px;
+            }
+
+            .thamfndate {
+                font-size: 0.85rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .paragraph p {
+                font-size: 1rem;
+            }
+
+            .track-highlights {
+                font-size: 0.85rem;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-item, .dropdown-toggle {
+                margin-right: 10px;
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+
+            .dropdown-menu {
+                min-width: 160px;
+            }
+
+            .dropdown-item {
+                padding: 5px 8px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .blog-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .blog-banner img {
+                margin-bottom: 10px;
+            }
+
+            .album-cover {
+                width: 100px;
+                height: 100px;
+            }
+
+            .album-title {
+                font-size: 1.6rem;
+            }
+
+            .artist-name {
+                font-size: 0.9rem;
+            }
+
+            .rating {
+                font-size: 0.9rem;
+                padding: 3px 6px;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .paragraph p {
+                font-size: 0.9rem;
+            }
+
+            .track-highlights {
+                font-size: 0.8rem;
+            }
+
+            .back-button {
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <div style="display: flex; align-items: center;">
+            <img src="https://www.wslfradio.org/WSLF.png" alt="WSLF Logo">
+            <div class="menu-items">
+                <div class="menu-item" onclick="window.location.href='about'"><i class="fas fa-info-circle"></i> About</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'"><i class="fas fa-music"></i> WSLF</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'"><i class="fas fa-cloud-sun"></i> KEC94</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'"><i class="fas fa-cloud-sun"></i> WWG41</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'"><i class="fas fa-cloud-sun"></i> WXL87</div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="dropdown-toggle"><i class="fas fa-bars"></i> More</div>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <div class="dropdown-item static-item" onclick="window.location.href='status'"><i class="fas fa-signal"></i> Stream Status</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='blog'"><i class="fas fa-blog"></i> Blog</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='coming-soon'"><i class="fas fa-clock"></i> Coming Soon</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='placeholder'"><i class="fas fa-plus"></i> Placeholder</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="blog-banner">
+            <img src="https://www.wslfradio.org/WSLF.png" alt="WSLF Logo">
+            <h1>Music Reviews</h1>
+        </div>
+
+        <div class="album-info">
+            <img src="data:image/jpeg;base64,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" alt="Section.80 Album Cover" class="album-cover">
+            <div class="album-details">
+                <h2 class="album-title">Section.80</h2>
+                <div class="artist-name">Kendrick Lamar</div>
+                <div class="rating positive">8/10</div>
+            </div>
+        </div>
+
+        <div class="thamfndate">Released on Jul 2, 2021 | Reviewed on Oct 15, 2012</div>
+
+        <div class="paragraph">
+            <h3>Strong Start for a Compton Kid</h3>
+            <p>We are kickin off the music reviews series, and what better way to start than with Kendrick Lamar’s official debut album, Section.80? Spanning 16 tracks and clocking in at just under an hour, it's clear this isn't your typical rapper on the West Coast flexin and acting tough, dudes dropping real bars talkin about the struggles of growing up and stuff. The beats on this thing are straight up fire, with that futuristic 90's alternative rap vibe that takes you back in time. Tracks like A.D.H.D and Rigamortus go hard with their sick flows and dope production, and Kendrick's delivery got me hooked. It's as if I'm in LA myself experiencing everything Kendrick is saying. </p>
+            <hr>
+        </div>
+
+        <div class="paragraph">
+            <h3>Rating</h3>
+            <p>Now it's time to rate this album. I am gonna introduce my own rating system, called the Doutree Richter Scale. it’s like a regular x/10 scale, but we talkin and shakin floors, active clubs, and how hard the beats are hittin. The solid and impressive beats, kendrick's flow, and the fact that this is a debut album lands this album an 8 on the Doutree Richter Scale. It shakes up the floor quite a bit, what I like to see from a debut album. </p>
+            <hr>
+        </div>
+
+        <div class="track-highlights">
+            <p><strong>Favorite Tracks:</strong> A.D.H.D, Chapter 12</p>
+            <p><strong>Least Favorite Track:</strong> Tammy's song (Her evils)</p>
+        </div>        
+
+        <div style="text-align: center;">
+            <button class="back-button" onclick="window.location.href='music_reviews'">Back to Reviews</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu adjustments
+        const menuItemsContainer = document.querySelector('.menu-items');
+        const dropdownMenu = document.querySelector('#dropdown-menu');
+        const menuItems = Array.from(document.querySelectorAll('.menu-item'));
+        const staticDropdownItems = Array.from(document.querySelectorAll('.dropdown-item.static-item'));
+        let movedItems = new Map();
+
+        function adjustMenuForMobile() {
+            const menuBarRect = document.querySelector('.menu-bar').getBoundingClientRect();
+            const dropdownRect = document.querySelector('.dropdown').getBoundingClientRect();
+            const maxVisibleX = menuBarRect.width - dropdownRect.width - 20;
+
+            movedItems.forEach((clone, onclick) => {
+                const originalItem = menuItems.find(item => item.getAttribute('onclick') === onclick);
+                if (originalItem) {
+                    const cloneRect = clone.getBoundingClientRect();
+                    if (cloneRect.right <= maxVisibleX && cloneRect.left >= 0) {
+                        menuItemsContainer.appendChild(originalItem);
+                        clone.remove();
+                        movedItems.delete(onclick);
+                    }
+                }
+            });
+
+            menuItems.forEach(item => {
+                const itemRect = item.getBoundingClientRect();
+                if (itemRect.right > maxVisibleX || itemRect.left < 0) {
+                    const clone = item.cloneNode(true);
+                    clone.classList.add('dropdown-item');
+                    clone.classList.remove('menu-item');
+                    dropdownMenu.appendChild(clone);
+                    movedItems.set(item.getAttribute('onclick'), clone);
+                    item.remove();
+                }
+            });
+        }
+
+        window.addEventListener('load', adjustMenuForMobile);
+        window.addEventListener('resize', adjustMenuForMobile);
+    </script>
+</body>
+</html>
