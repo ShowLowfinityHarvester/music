@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="WSLF Radio Music Review - DAMN. by Kendrick Lamar">
+    <meta property="og:description" content="A detailed review of Kendrick Lamar's album DAMN., released in 2017, on WSLF Radio.">
+    <meta property="og:image" content="https://wslf-radio.neocities.org/WSLF_Transparent.png">
+    <title>Album Review - DAMN. by Kendrick Lamar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #3a3a3a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s ease-in-out;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .menu-bar img {
+            width: 50px;
+            margin-right: 20px;
+        }
+
+        .menu-items {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+
+        .menu-item {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .menu-item:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .menu-item i {
+            margin-right: 8px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #3a3a3a;
+            min-width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #e0e0e0;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 80px auto 30px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .blog-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #3a3a3a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-banner img {
+            width: 100px;
+            height: auto;
+        }
+
+        .blog-banner h1 {
+            margin: 0;
+            color: #e0e0e0;
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+
+        .album-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background: #3a3a3a;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        .album-cover {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .album-details {
+            flex: 1;
+        }
+
+        .album-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .artist-name {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin: 5px 0;
+        }
+
+        .rating {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 6px;
+            background-color: #ef5350; /* for not good to 4 */
+            color: #fff;
+        }
+
+        .rating.neutral {
+            background-color: #ffca28; /* for 5 to 7 */
+        }
+
+        .rating.positive {
+            background-color: #4caf50; /* for 8 to 10 */
+        }
+
+        .thamfndate {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h3 {
+            text-align: left;
+            color: #e0e0e0;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 15px 0;
+            border-left: 4px solid #555;
+            padding-left: 10px;
+        }
+
+        .paragraph {
+            margin: 20px 0;
+            color: #d0d0d0;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        .paragraph p {
+            font-size: 1.2rem;
+            color: #d0d0d0;
+            margin: 15px 0;
+        }
+
+        .paragraph:nth-child(1) { animation-delay: 0.2s; }
+        .paragraph:nth-child(2) { animation-delay: 0.4s; }
+        .paragraph:nth-child(3) { animation-delay: 0.6s; }
+        .paragraph:nth-child(4) { animation-delay: 0.8s; }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #555;
+            margin: 20px 0;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .track-highlights {
+            margin: 20px 0;
+            padding: 10px;
+            background: #3a3a3a;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        .track-highlights p {
+            margin: 5px 0;
+        }
+
+        .track-highlights strong {
+            color: #e0e0e0;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #3a3a3a;
+            color: #e0e0e0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-bar img {
+                width: 40px;
+            }
+
+            .menu-item, .dropdown-toggle {
+                margin-right: 15px;
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+
+            .dropdown-menu {
+                min-width: 180px;
+            }
+
+            .dropdown-item {
+                padding: 6px 10px;
+            }
+
+            .content {
+                margin: 70px 20px 20px 20px;
+                padding: 20px;
+            }
+
+            .blog-banner {
+                padding: 15px;
+            }
+
+            .blog-banner h1 {
+                font-size: 1.5rem;
+            }
+
+            .album-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .album-cover {
+                width: 120px;
+                height: 120px;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .album-title {
+                font-size: 1.8rem;
+            }
+
+            .artist-name {
+                font-size: 1rem;
+            }
+
+            .rating {
+                font-size: 1rem;
+                padding: 4px 8px;
+            }
+
+            .thamfndate {
+                font-size: 0.85rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .paragraph p {
+                font-size: 1rem;
+            }
+
+            .track-highlights {
+                font-size: 0.85rem;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-item, .dropdown-toggle {
+                margin-right: 10px;
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+
+            .dropdown-menu {
+                min-width: 160px;
+            }
+
+            .dropdown-item {
+                padding: 5px 8px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .blog-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .blog-banner img {
+                margin-bottom: 10px;
+            }
+
+            .album-cover {
+                width: 100px;
+                height: 100px;
+            }
+
+            .album-title {
+                font-size: 1.6rem;
+            }
+
+            .artist-name {
+                font-size: 0.9rem;
+            }
+
+            .rating {
+                font-size: 0.9rem;
+                padding: 3px 6px;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .paragraph p {
+                font-size: 0.9rem;
+            }
+
+            .track-highlights {
+                font-size: 0.8rem;
+            }
+
+            .back-button {
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <div style="display: flex; align-items: center;">
+            <img src="https://www.wslfradio.org/WSLF.png" alt="WSLF Logo">
+            <div class="menu-items">
+                <div class="menu-item" onclick="window.location.href='about'"><i class="fas fa-info-circle"></i> About</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'"><i class="fas fa-music"></i> WSLF</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'"><i class="fas fa-cloud-sun"></i> KEC94</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'"><i class="fas fa-cloud-sun"></i> WWG41</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'"><i class="fas fa-cloud-sun"></i> WXL87</div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="dropdown-toggle"><i class="fas fa-bars"></i> More</div>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <div class="dropdown-item static-item" onclick="window.location.href='status'"><i class="fas fa-signal"></i> Stream Status</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='blog'"><i class="fas fa-blog"></i> Blog</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='coming-soon'"><i class="fas fa-clock"></i> Coming Soon</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='placeholder'"><i class="fas fa-plus"></i> Placeholder</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="blog-banner">
+            <img src="https://www.wslfradio.org/WSLF.png" alt="WSLF Logo">
+            <h1>Music Reviews</h1>
+        </div>
+
+        <div class="album-info">
+            <img src="image goes here" alt="DAMN. Album Cover" class="album-cover">
+            <div class="album-details">
+                <h2 class="album-title">DAMN.</h2>
+                <div class="artist-name">Kendrick Lamar</div>
+                <div class="rating positive">8/10</div>
+            </div>
+        </div>
+
+        <div class="thamfndate">Released on Apr 14, 2017 | Reviewed on Apr 21, 2017</div>
+
+        <div class="paragraph">
+            <h3>MAINSTREAM. BANGER.</h3>
+            <p>2017 has been a good year so far, despite the inauguration of DJT. I think kendrick is out to make the year even better with these tracks! Spanning 14 tracks and clocking in at just about 55 minutes, Kendrick is taking a step back from the jazz scene to give us something more direct, but is still giving us this deep introspective vibe that he's known for. He talks about pride, fear, and other struggles of being human, and he does it with the hardest beats I've heard in a while. Tracks like DNA. hit hard with Kendrick's hard ass bars. Some other tracks like LOVE. and GOD. lean into this new mainstream pop-rap type thing, which I do not like as much, but the tracks still sound good. </p>
+            <p>The production on this project was tight, with West Coast Flavor mixed in with some pop and trap elements in it. Some songs on this album like LOYALTY. and LOVE. feel a bit too polished, as if kendrick is tryna chase a radio hit. Still, those tracks still hit hard and make this album great. This project is not as experimental as his last one, but it still has that magic that makes you want to put DAMN. on repeat. </p>
+            <hr>
+        </div>
+
+        <div class="paragraph">
+            <h3>Rating</h3>
+            <p>I really do not have much to say about this project. It gets a solid 8 on the Doutree Richter Scale. It shakes up the floor a lot with it's track but not as much as the previous two project's combined. </p>
+            <hr>
+        </div>
+
+        <div class="track-highlights">
+            <p><strong>Favorite Tracks:</strong>  DNA., HUMBLE., FEAR., LOVE., DUCKSWORTH., LOYALTY.</p>
+            <p><strong>Least Favorite Track:</strong>  GOD.</p>
+        </div>        
+
+        <div style="text-align: center;">
+            <button class="back-button" onclick="window.location.href='music_reviews'">Back to Reviews</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu adjustments
+        const menuItemsContainer = document.querySelector('.menu-items');
+        const dropdownMenu = document.querySelector('#dropdown-menu');
+        const menuItems = Array.from(document.querySelectorAll('.menu-item'));
+        const staticDropdownItems = Array.from(document.querySelectorAll('.dropdown-item.static-item'));
+        let movedItems = new Map();
+
+        function adjustMenuForMobile() {
+            const menuBarRect = document.querySelector('.menu-bar').getBoundingClientRect();
+            const dropdownRect = document.querySelector('.dropdown').getBoundingClientRect();
+            const maxVisibleX = menuBarRect.width - dropdownRect.width - 20;
+
+            movedItems.forEach((clone, onclick) => {
+                const originalItem = menuItems.find(item => item.getAttribute('onclick') === onclick);
+                if (originalItem) {
+                    const cloneRect = clone.getBoundingClientRect();
+                    if (cloneRect.right <= maxVisibleX && cloneRect.left >= 0) {
+                        menuItemsContainer.appendChild(originalItem);
+                        clone.remove();
+                        movedItems.delete(onclick);
+                    }
+                }
+            });
+
+            menuItems.forEach(item => {
+                const itemRect = item.getBoundingClientRect();
+                if (itemRect.right > maxVisibleX || itemRect.left < 0) {
+                    const clone = item.cloneNode(true);
+                    clone.classList.add('dropdown-item');
+                    clone.classList.remove('menu-item');
+                    dropdownMenu.appendChild(clone);
+                    movedItems.set(item.getAttribute('onclick'), clone);
+                    item.remove();
+                }
+            });
+        }
+
+        window.addEventListener('load', adjustMenuForMobile);
+        window.addEventListener('resize', adjustMenuForMobile);
+    </script>
+</body>
+</html>
